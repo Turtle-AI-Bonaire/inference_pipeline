@@ -38,6 +38,7 @@ The inference pipeline processes a batch of images and applies necessary AI mode
 * **Detection Model**: Identifies the region of interest (turtle's face) in images. Supported models include YOLOv8 or YOLO11.
 * **Embedding Model**: Maps the detected face into a high-dimensional vector space, typically using a fine-tuned ResNet architecture. This model uses loss functions like Contrastive Loss, Proxy-Anchor Loss, or ArcFace Loss to improve the accuracy of the embeddings.
 * **Embedding Aggregation**: If multiple images of the same turtle are available, their embeddings are averaged to create a more representative embedding, improving recognition accuracy.
+
 ### 4. Recognition and Visual Output
 The recognition phase compares query embeddings with those in the database. The closest matches are ranked using a cosine similarity function. The system outputs a gallery of matching turtles, ranked by similarity, with visual results for easy interpretation.
 
@@ -47,7 +48,30 @@ The recognition phase compares query embeddings with those in the database. The 
 * **Embedding Aggregation**: Optionally aggregate embeddings from multiple images for better recognition.
 * **Top N Results**: Control how many matched images are returned for each turtle in the query.
 ## Setup and Usage
-* Clone this repository to your Google Colab environment.
-* Upload the image dataset and query images according to the specified folder and file paths, or modify them to your situation.
-* Run the pipeline: Process images using the recognition and inference pipeline.
-* Review the results: The system will output a collage of the most similar images from the gallery for each individual turtle in the query folder.
+
+### Installation instructions
+**Step 1**: Download this pipeline.ipynb file and upload it to your drive.
+
+**Step 2**: Upload the dataset to your drive if you haven't already.
+
+**Step 3**: Create a folder for images you want to indentify in your drive and upload images there.
+
+**Step 4**: Download and upload the fine-tuned model weights for the models used in this pipeline. To get a copy of the model weights contact your developers or dan.rayu@gmail.com.
+
+**Step 5**: Open the pipeline.ipynb file and fill in paths for the image dataset, the identify folder, the model weights. You will be given straightforward errors if some of these files can't be found.
+
+Congrats! You have done all the necessary preparations to use the pipeline.
+
+### Usage instructions:
+**Step 1**: Insert images of unknown turtles into the predict folder found on your drive.
+
+**Step 2**:  Make sure this notebook is connected to the GPU
+
+* Check the top right corner. If next to the ✅ it says “T4” or “Connect GPU” you are good to go
+* If it says nothing, or anything other than T4 or GPU, you need to click the small arrow (▼) and select “Change runtime type”. Then in the pop-up menu you can select T4 GPU and save.
+
+**Step 3**: Now click on the play button (Run all) next to the text to start the code
+
+**Step 4**: A pop-up will show saying you need to connect to drive - accept
+
+**Step 5**: Scroll to the bottom wait for the results to show up.
